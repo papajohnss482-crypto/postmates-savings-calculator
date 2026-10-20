@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uber One Break-Even Calculator for Postmates: Is $9.99 a Month Worth It?</title>
+<meta name="description" content="Enter how often you order Postmates and your usual delivery fee. This tool compares your monthly delivery fees against the $9.99 Uber One price checked in-app in October 2026.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <div class="brand">Postmates Savings Calculator</div>
+  <nav>
+    <a href="index.html">Calculator</a>
+    <a href="meal-deals-math.html">Meal Deals Math</a>
+    <a href="uber-one-break-even.html">Uber One Break-Even</a>
+    <a href="method.html">Method and Sources</a>
+  </nav>
+</header>
+
+<h1>Uber One Break-Even Calculator</h1>
+<p class="muted">The membership, as shown in the app in October 2026 (checked October 2, re-checked October 12): free for 4 weeks, then $9.99 per month, $0 delivery fee on eligible orders, up to 10 percent off. This tool answers the only question that decides it: do your monthly delivery fees pass $9.99?</p>
+
+<div class="panel">
+  <div class="grid">
+    <div>
+      <label for="beOrders">Orders you place per month</label>
+      <input type="number" id="beOrders" value="3" min="0" step="1">
+    </div>
+    <div>
+      <label for="beFee">Your usual delivery fee per order ($)</label>
+      <input type="number" id="beFee" value="3.99" min="0" step="0.01">
+    </div>
+  </div>
+  <button class="calc" id="beGo">Check break-even</button>
+  <div class="result" id="beResult" hidden></div>
+  <p class="small">This compares fees only, the strictest test. Percentage discounts, which vary by order, are treated as a bonus on top, never as the reason to join.</p>
+</div>
+
+<h2>Quick reference</h2>
+<table>
+  <thead><tr><th>Your usual delivery fee</th><th>Orders per month needed to pass $9.99</th></tr></thead>
+  <tbody>
+    <tr><td>$2.99</td><td>4 orders (3 orders is $8.97, just short)</td></tr>
+    <tr><td>$3.99</td><td>3 orders ($11.97)</td></tr>
+    <tr><td>$4.99</td><td>3 orders (2 orders is $9.98, one cent short)</td></tr>
+    <tr><td>$5.99</td><td>2 orders ($11.98)</td></tr>
+  </tbody>
+</table>
+
+<h2>Two traps this tool exists to prevent</h2>
+<ul>
+  <li><strong>The forgotten trial.</strong> The 4 week free trial converts to $9.99 per month automatically. If you take the trial, set the cancellation reminder the same day, not in week four.</li>
+  <li><strong>Counting discounts you would not have spent.</strong> Up to 10 percent off is only a saving on orders you were placing anyway. Ordering more to justify a membership is spending dressed as saving.</li>
+</ul>
+<p>For the full order level math, including service fees and codes, use the <a href="index.html">main savings calculator</a>.</p>
+
+<footer>
+  <p>Postmates Savings Calculator is an independent tool, not affiliated with Postmates or Uber. Membership price and benefits were those shown in the app on the dates above and can change.</p>
+</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

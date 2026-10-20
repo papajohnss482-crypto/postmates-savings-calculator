@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postmates Savings Calculator: What Your Order Really Costs (October 2026)</title>
+<meta name="description" content="Free Postmates savings calculator. Enter your order, fees and any promo code to see your real total, compare percentage vs flat codes, and check Meal Deals and Uber One savings.">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How does the Postmates savings calculator work?","acceptedAnswer":{"@type":"Answer","text":"Enter your order subtotal, the delivery fee and service fee shown in your cart, and the terms of any promo code you have. The calculator works out your total with the code, with Uber One, and with neither, and shows which option saves the most. It uses only your numbers, nothing is uploaded."}},
+    {"@type":"Question","name":"Is a percentage code or a flat code better on Postmates?","acceptedAnswer":{"@type":"Answer","text":"It depends on order size. A flat code wins on small orders and a percentage code wins once the order passes the crossover point, which is the flat amount divided by the percentage. For a $10 flat code against a 20 percent code, the crossover is a $50 order."}},
+    {"@type":"Question","name":"Do promo codes stack with Uber One on Postmates?","acceptedAnswer":{"@type":"Answer","text":"Stacking is decided by the app for each account and offer. This calculator shows the combined figure as an estimate so you can plan, and the app total at checkout is the final word."}}
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <div class="brand">Postmates Savings Calculator</div>
+  <nav>
+    <a href="index.html">Calculator</a>
+    <a href="meal-deals-math.html">Meal Deals Math</a>
+    <a href="uber-one-break-even.html">Uber One Break-Even</a>
+    <a href="method.html">Method and Sources</a>
+  </nav>
+</header>
+
+<h1>What will your Postmates order really cost?</h1>
+<p class="muted">Enter the numbers from your own cart. This tool does the fee and promo math honestly, with no code hype. Programs referenced on this page, $12 Meal Deals and Uber One, were checked in the Postmates app in October 2026, most recently on October 12, 2026.</p>
+
+<div class="panel">
+  <h3 style="margin-top:0">Your order</h3>
+  <div class="grid">
+    <div>
+      <label for="subtotal">Order subtotal ($)</label>
+      <input type="number" id="subtotal" value="32" min="0" step="0.01">
+    </div>
+    <div>
+      <label for="delivery">Delivery fee shown in cart ($)</label>
+      <input type="number" id="delivery" value="3.99" min="0" step="0.01">
+    </div>
+    <div>
+      <label for="servicePct">Service fee (percent of subtotal)</label>
+      <input type="number" id="servicePct" value="13" min="0" step="0.5">
+    </div>
+    <div>
+      <label for="promoType">Promo code type</label>
+      <select id="promoType">
+        <option value="none">No code</option>
+        <option value="percent" selected>Percent off subtotal</option>
+        <option value="flat">Flat amount off</option>
+      </select>
+    </div>
+    <div>
+      <label for="promoValue">Code value (percent, or $ off)</label>
+      <input type="number" id="promoValue" value="20" min="0" step="0.5">
+    </div>
+    <div>
+      <label for="promoMin">Code minimum order ($, 0 if none)</label>
+      <input type="number" id="promoMin" value="25" min="0" step="0.01">
+    </div>
+  </div>
+  <p class="check" style="margin-top:14px">
+    <input type="checkbox" id="uberOne">
+    <label for="uberOne" style="margin:0;color:var(--ink)">I have Uber One (delivery fee becomes $0 on eligible orders)</label>
+  </p>
+  <button class="calc" id="go">Calculate my total</button>
+  <div class="result" id="result" hidden></div>
+  <p class="small">Tax is not included, it varies by location. Service fee is estimated on the subtotal before discounts, the way most carts present it. The checkout screen in the app is always the final word.</p>
+</div>
+
+<h2>Percentage code or flat code: which wins?</h2>
+<p>The answer changes with order size, and the crossover is simple math: the flat amount divided by the percentage. A $10 flat code against a 20 percent code crosses over at a $50 order. Below $50 the flat code wins, above $50 the percentage code wins. Terms below are <span class="tag example">worked examples</span> using sample code terms, real codes carry their own terms and minimums.</p>
+<table>
+  <thead><tr><th>Order subtotal</th><th>$10 off (min $25)</th><th>20 percent off</th><th>Winner</th></tr></thead>
+  <tbody>
+    <tr><td>$25</td><td class="win">You pay $15 of the subtotal</td><td>You pay $20</td><td class="win">Flat code</td></tr>
+    <tr><td>$35</td><td class="win">You pay $25</td><td>You pay $28</td><td class="win">Flat code</td></tr>
+    <tr><td>$50</td><td>You pay $40</td><td>You pay $40</td><td>Equal</td></tr>
+    <tr><td>$75</td><td>You pay $65</td><td class="win">You pay $60</td><td class="win">Percentage code</td></tr>
+    <tr><td>$100</td><td>You pay $90</td><td class="win">You pay $80</td><td class="win">Percentage code</td></tr>
+  </tbody>
+</table>
+<p class="small">One warning from real code tracking: minimums bite. A $10 code with a $25 minimum does nothing at all on a $24 order, however good it looks on a listing page.</p>
+
+<h2>The two programs that beat code hunting</h2>
+<div class="panel">
+  <h3 style="margin-top:0">$12 Meal Deals <span class="tag">Verified in-app, Oct 2026</span></h3>
+  <p>Set meals at $12 with $0 delivery fee and $0 service fee at participating restaurants, re-checked October 12, 2026. On a typical order that structure beats most codes before you even start. Full math on the <a href="meal-deals-math.html">Meal Deals math page</a>.</p>
+  <h3>Uber One <span class="tag">Verified in-app, Oct 2026</span></h3>
+  <p>4 week free trial, then $9.99 per month, with $0 delivery fees on eligible orders. Whether it pays for you depends only on how often you order. Run your own numbers on the <a href="uber-one-break-even.html">Uber One break-even tool</a>.</p>
+</div>
+
+<h2>Where the code terms in this tool come from</h2>
+<p>This calculator does not invent codes or copy listings. You enter the terms of the code you actually have, and the two standing programs it references are the ones confirmed in the app in October 2026. If you need a code to try, the terms here are checked against the current list at <a href="https://postmatescoupons.us/">Postmates Coupons</a>, which tracks additions and delistings with per code check dates. How we source and date everything is on the <a href="method.html">method and sources page</a>.</p>
+
+<footer>
+  <p>Postmates Savings Calculator is an independent tool, not affiliated with Postmates or Uber. Figures are estimates from the numbers you enter. Confirm every total in the app before ordering.</p>
+</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
